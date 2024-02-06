@@ -21,6 +21,25 @@ public class ProductRepository {
         productData.removeIf(product -> product.getProductId() == id);
     }
 
+    public Product edit(Product product, int id) {
+        for (Product productDatum : productData) {
+            if (productDatum.getProductId() == id) {
+                productDatum.setProductQuantity(product.getProductQuantity());
+                productDatum.setProductName(product.getProductName());
+            }
+        }
+        return product;
+    }
+
+    public Product getById(int id) {
+        for (Product productDatum : productData) {
+            if (productDatum.getProductId() == id) {
+                return productDatum;
+            }
+        }
+        return null;
+    }
+
     public Iterator<Product> findAll() {
         return productData.iterator();
     }
