@@ -36,6 +36,11 @@ public class ProductController {
         return "productList";
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteById(@PathVariable("id") int id) {
+        service.deleteById(id);
+    }
+
     @GetMapping("/edit/{id}")
     public String editProductPage(Model model, @PathVariable("id") int id) {
         Product product = service.getById(id);

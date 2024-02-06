@@ -17,6 +17,10 @@ public class ProductRepository {
         return product;
     }
 
+    public void deleteById(int id) {
+        productData.removeIf(product -> product.getProductId() == id);
+    }
+
     public Product edit(Product product, int id) {
         for (Product productDatum : productData) {
             if (productDatum.getProductId() == id) {
