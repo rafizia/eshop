@@ -31,7 +31,7 @@ class HomePageFunctionalTest {
     private String baseUrl;
     @BeforeEach
     void setupTest() {
-    baseUrl = String.format("%s:%d/product/list", testBaseUrl, serverPort);
+    baseUrl = String.format("%s:%d/product/home", testBaseUrl, serverPort);
     }
     @Test
     void pageTitle_isCorrect(ChromeDriver driver) throws Exception {

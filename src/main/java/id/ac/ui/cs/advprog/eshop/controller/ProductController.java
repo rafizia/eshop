@@ -35,4 +35,9 @@ public class ProductController {
         model.addAttribute("products", allProducts);
         return "productList";
     }
+
+    @GetMapping("/home")
+    public String homePage(Model model) {
+        return "HomePage";
+    }
 }
