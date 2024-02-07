@@ -35,6 +35,11 @@ public class ProductController {
         model.addAttribute("products", allProducts);
         return "productList";
     }
+    
+    @GetMapping("/home")
+    public String homePage(Model model) {
+        return "HomePage";
+    }
 
     @GetMapping("/delete/{id}")
     public String deleteById(@PathVariable("id") int id) {
