@@ -23,7 +23,7 @@ class ProductRepositoryTest {
     @Test
     void testCreateAndFind() {
         Product product = new Product();
-        product.setProductId(1);
+        product.setProductId("dsds");
         product.setProductName("Sanpo Cap Bambang");
         product.setProductQuantity(100);
         productRepository.create(product);
@@ -44,13 +44,13 @@ class ProductRepositoryTest {
     @Test
     void testFindAllIfMoreThanOneProduct() {
         Product product1 = new Product();
-        product1.setProductId(1);
+        product1.setProductId("ds");
         product1.setProductName("Sampo Cap Bambang");
         product1.setProductQuantity(100);
         productRepository.create(product1);
 
         Product product2 = new Product();
-        product2.setProductId(2);
+        product2.setProductId("d");
         product2.setProductName("Sanpo Cap Usep");
         product2.setProductQuantity(50);
         productRepository.create(product2);
@@ -67,30 +67,30 @@ class ProductRepositoryTest {
     @Test
     public void testEditProduct() {
         Product product = new Product();
-        product.setProductId(1);
+        product.setProductId("ds");
         product.setProductName("Sanpo Cap Bambang");
         product.setProductQuantity(100);
         productRepository.create(product);
 
         Product product2 = new Product();
-        product2.setProductId(2);
+        product2.setProductId("d");
         product2.setProductName("Sanpo Cap Usep");
         product2.setProductQuantity(50);
 
-        productRepository.edit(product2, 1);
-        assertEquals("Sanpo Cap Usep", productRepository.getById(1).getProductName());
-        assertEquals(50, productRepository.getById(1).getProductQuantity());
+        productRepository.edit(product2, "d");
+        assertEquals("Sanpo Cap Usep", productRepository.getById("d").getProductName());
+        assertEquals(50, productRepository.getById("dd").getProductQuantity());
     }
 
     @Test
     void testDeleteProduct() {
         Product product = new Product();
-        product.setProductId(1);
+        product.setProductId("d");
         product.setProductName("Sanpo Cap Bambang");
         product.setProductQuantity(100);
         productRepository.create(product);
 
-        productRepository.deleteById(1);
-        assertNull(productRepository.getById(1));
+        productRepository.deleteById("d");
+        assertNull(productRepository.getById("d"));
     }
 }
