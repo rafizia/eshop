@@ -23,7 +23,7 @@ class ProductRepositoryTest {
     @Test
     void testCreateAndFind() {
         Product product = new Product();
-        product.setProductId(1);
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
         product.setProductName("Sanpo Cap Bambang");
         product.setProductQuantity(100);
         productRepository.create(product);
@@ -44,13 +44,13 @@ class ProductRepositoryTest {
     @Test
     void testFindAllIfMoreThanOneProduct() {
         Product product1 = new Product();
-        product1.setProductId(1);
+        product1.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
         product1.setProductName("Sampo Cap Bambang");
         product1.setProductQuantity(100);
         productRepository.create(product1);
 
         Product product2 = new Product();
-        product2.setProductId(2);
+        product2.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
         product2.setProductName("Sanpo Cap Usep");
         product2.setProductQuantity(50);
         productRepository.create(product2);
@@ -67,30 +67,30 @@ class ProductRepositoryTest {
     @Test
     public void testEditProduct() {
         Product product = new Product();
-        product.setProductId(1);
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
         product.setProductName("Sanpo Cap Bambang");
         product.setProductQuantity(100);
         productRepository.create(product);
 
         Product product2 = new Product();
-        product2.setProductId(2);
+        product2.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
         product2.setProductName("Sanpo Cap Usep");
         product2.setProductQuantity(50);
 
-        productRepository.edit(product2, 1);
-        assertEquals("Sanpo Cap Usep", productRepository.getById(1).getProductName());
-        assertEquals(50, productRepository.getById(1).getProductQuantity());
+        productRepository.edit(product2, "eb558e9f-1c39-460e-8860-71af6af63bd6");
+        assertEquals("Sanpo Cap Usep", productRepository.getById("eb558e9f-1c39-460e-8860-71af6af63bd6").getProductName());
+        assertEquals(50, productRepository.getById("eb558e9f-1c39-460e-8860-71af6af63bd6").getProductQuantity());
     }
 
     @Test
     void testDeleteProduct() {
         Product product = new Product();
-        product.setProductId(1);
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
         product.setProductName("Sanpo Cap Bambang");
         product.setProductQuantity(100);
         productRepository.create(product);
 
-        productRepository.deleteById(1);
-        assertNull(productRepository.getById(1));
+        productRepository.deleteById("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        assertNull(productRepository.getById("eb558e9f-1c39-460e-8860-71af6af63bd6"));
     }
 }
