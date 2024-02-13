@@ -28,6 +28,11 @@ class ProductRepositoryTest {
         product.setProductQuantity(100);
         productRepository.create(product);
 
+        Product product2 = new Product();
+        product2.setProductName("Sanpo Cap Ucok");
+        product2.setProductQuantity(30);
+        productRepository.create(product2);
+
         Iterator<Product> productIterator = productRepository.findAll();
         assertTrue(productIterator.hasNext());
         Product savedProduct = productIterator.next();
@@ -92,5 +97,11 @@ class ProductRepositoryTest {
 
         productRepository.deleteById("eb558e9f-1c39-460e-8860-71af6af63bd6");
         assertNull(productRepository.getById("eb558e9f-1c39-460e-8860-71af6af63bd6"));
+    }
+
+    @Test
+    void testFindProduct() {
+        productRepository.getById("abcdefhi-2341");
+        assertNull(productRepository.getById("abcdefhi-2341"));
     }
 }
