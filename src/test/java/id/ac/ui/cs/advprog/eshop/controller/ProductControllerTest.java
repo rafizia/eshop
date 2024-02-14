@@ -78,8 +78,7 @@ public class ProductControllerTest {
 
     @Test
     public void testGetListProductController() throws Exception {
-        mockMvc.perform(get("/product/list")
-                .contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/product/list"))
                 .andExpect(status().isOk());
     }
 
