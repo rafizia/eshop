@@ -18,8 +18,14 @@ public class ProductRepository {
         return product;
     }
 
-    public void deleteById(String id) {
-        productData.removeIf(product -> product.getProductId().equals(id));
+    public boolean deleteById(String id) {
+        for (Product productDatum : productData) {
+            if (productDatum.getProductId().equals(id)) {
+                productData.remove(productDatum);
+                return true;
+            }
+        }
+        return false;
     }
 
     public Product edit(Product product, String id) {
