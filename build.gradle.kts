@@ -81,3 +81,7 @@ tasks.jacocoTestReport {
         xml.required = true
     }
 }
+
+jacoco {
+    toolVersion = "0.8.11"
+}
