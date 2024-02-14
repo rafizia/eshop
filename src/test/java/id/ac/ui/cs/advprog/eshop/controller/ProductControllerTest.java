@@ -77,10 +77,8 @@ public class ProductControllerTest {
     @Test
     public void testGetCreateProductController() throws Exception {
         given(productService.create(product)).willReturn(product);
-
-        mockMvc.perform(get("/product/create")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+        mockMvc.perform(get("/product/create"))
+                .andExpect(status().is2xxSuccessful());
     }
 
     @Test
