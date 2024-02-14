@@ -18,6 +18,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -39,6 +42,7 @@ public class ProductControllerTest {
 
     private Product product = new Product();
     Product product2 = new Product();
+    List<Product> allProduct = new ArrayList<>();
 
     @BeforeEach
     void setUp() {
@@ -52,6 +56,9 @@ public class ProductControllerTest {
         product2.setProductName("Sanpo Cap Usep");
         product2.setProductQuantity(50);
         productService.create(product2);
+
+        allProduct.add(product);
+        allProduct.add(product2);
 
         Mockito.when(productService.getById(product.getProductId()))
                 .thenReturn(product);
@@ -78,6 +85,7 @@ public class ProductControllerTest {
 
     @Test
     public void testGetListProductController() throws Exception {
+        given(productService.findAll()).willReturn(allProduct);
         mockMvc.perform(get("/product/list"))
                 .andExpect(status().isOk());
     }
