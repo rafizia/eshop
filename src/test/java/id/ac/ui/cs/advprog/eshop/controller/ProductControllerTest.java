@@ -95,14 +95,14 @@ public class ProductControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
-
+/*
     @Test
     public void testEditProduct() throws Exception {
         given(productService.edit(product2, "eb558e9f-1c39-460e-8860-71af6af63bd6")).willReturn(product);
         mockMvc.perform(get("/product/edit/{id}", "eb558e9f-1c39-460e-8860-71af6af63bd6")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-    }
+    }*/
 
     @Test
     public void testPostEditProduct() throws Exception {
@@ -110,6 +110,11 @@ public class ProductControllerTest {
         mockMvc.perform(post("/product/edit/{id}", "eb558e9f-1c39-460e-8860-71af6af63bd6")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(redirectedUrl("/product/list"));
+
+        given(productService.edit(product2, "eb558e9f-1c39-460e-8860-71af6af63bd6")).willReturn(product);
+        mockMvc.perform(get("/product/edit/{id}", "eb558e9f-1c39-460e-8860-71af6af63bd6")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 
     @Test
