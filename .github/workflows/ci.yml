@@ -22,8 +22,6 @@ jobs:
         run: chmod +x ./gradlew
       - name: Run unit tests
         run: ./gradlew test
-      - name: Build
-        run: ./gradlew compileJava
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
