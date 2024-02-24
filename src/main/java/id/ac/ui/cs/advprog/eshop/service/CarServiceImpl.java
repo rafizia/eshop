@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 @Service
-public class CarServiceImpl implements CarService {
+public class CarServiceImpl implements CarDeletionService, CarFindService, CarUpdateService, CarCreateService {
     @Autowired
     private CarRepository carRepository;
 
@@ -28,8 +28,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Car findById(String carId) {
-        Car car = carRepository.findById(carId);
-        return car;
+        return carRepository.findById(carId);
     }
 
     @Override
