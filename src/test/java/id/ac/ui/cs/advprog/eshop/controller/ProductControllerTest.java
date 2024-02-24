@@ -1,7 +1,9 @@
 package id.ac.ui.cs.advprog.eshop.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import id.ac.ui.cs.advprog.eshop.model.Car;
 import id.ac.ui.cs.advprog.eshop.model.Product;
+import id.ac.ui.cs.advprog.eshop.service.CarService;
 import id.ac.ui.cs.advprog.eshop.service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,6 +39,9 @@ public class ProductControllerTest {
     @MockBean
     private ProductService productService;
 
+    @MockBean
+    private CarService carService;
+
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -50,7 +55,6 @@ public class ProductControllerTest {
         product.setProductName("Sampo Cap Bambang");
         product.setProductQuantity(100);
         productService.create(product);
-
 
         product2.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
         product2.setProductName("Sanpo Cap Usep");
