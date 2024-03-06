@@ -4,7 +4,6 @@ import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
 import id.ac.ui.cs.advprog.eshop.model.Product;
-import id.ac.ui.cs.advprog.eshop.repository.OrderRepository;
 import id.ac.ui.cs.advprog.eshop.repository.PaymentRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -76,7 +75,7 @@ class PaymentServiceTest {
 
     @Test
     void testCreatePayment() {
-        Payment result = paymentService.addPayment(orders.get(1), payments.get(1).getMethod(), payments.get(1).getPayment());
+        Payment result = paymentService.addPayment(orders.get(1), payments.get(1).getMethod(), payments.get(1).getPaymentData());
         verify(paymentRepository, times(1)).save(result);
     }
 
@@ -85,14 +84,14 @@ class PaymentServiceTest {
         Payment payment = payments.get(1);
         doReturn(payment).when(paymentRepository).findById(payment.getId());
 
-        assertNull(paymentService.addPayment(orders.get(1), "Cash On Delivery", payments.get(1).getPayment()));
+        assertNull(paymentService.addPayment(orders.get(1), "Cash On Delivery", payments.get(1).getPaymentData()));
         verify(paymentRepository, times(0)).save(payment);
     }
 
     @Test
     void testUpdateStatus() {
         Payment payment = payments.get(1);
-        Payment newPayment = new Payment(payment.getId(), payment.getMethod(), payment.getPayment(),
+        Payment newPayment = new Payment(payment.getId(), payment.getMethod(), payment.getPaymentData(),
                 PaymentStatus.SUCCESS.getValue());
         doReturn(payment).when (paymentRepository).findById(payment.getId());
         doReturn(newPayment).when(paymentRepository).save(any(Payment.class));

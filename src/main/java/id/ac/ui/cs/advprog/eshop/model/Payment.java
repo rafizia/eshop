@@ -10,22 +10,22 @@ public class Payment {
     private String id;
     private String method;
     private String status;
-    private Map<String,String> payment;
+    private Map<String,String> paymentData;
 
-    public Payment(String id, String method, Map<String,String> payment) {
+    public Payment(String id, String method, Map<String,String> paymentData) {
         this.id = id;
         this.method = method;
         this.status = PaymentStatus.SUCCESS.getValue();
 
-        if (payment.isEmpty()) {
+        if (paymentData.isEmpty()) {
             throw new IllegalArgumentException();
         } else {
-            this.payment = payment;
+            this.paymentData = paymentData;
         }
     }
 
-    public Payment(String id, String method, Map<String,String> payment, String status) {
-        this(id, method, payment);
+    public Payment(String id, String method, Map<String,String> paymentData, String status) {
+        this(id, method, paymentData);
         this.setStatus(status);
     }
 

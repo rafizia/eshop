@@ -31,7 +31,7 @@ public class PaymentTest {
         Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
                 "Cash on Delivery", this.paymentMap);
 
-        assertSame(this.paymentMap, payment.getPayment());
+        assertSame(this.paymentMap, payment.getPaymentData());
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
         assertEquals("Cash on Delivery", payment.getMethod());
         assertEquals("ESHOP1234ABC5678", paymentMap.get("voucherCode"));

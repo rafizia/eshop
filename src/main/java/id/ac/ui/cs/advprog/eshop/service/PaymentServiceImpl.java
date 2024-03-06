@@ -2,7 +2,6 @@ package id.ac.ui.cs.advprog.eshop.service;
 
 import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
-import id.ac.ui.cs.advprog.eshop.model.Payment;
 import id.ac.ui.cs.advprog.eshop.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +27,7 @@ public class PaymentServiceImpl implements PaymentService{
         Payment payment = paymentRepository.findById(payment2.getId());
         if (payment != null) {
             Payment newPayment = new Payment(payment.getId(), payment.getMethod(),
-                    payment.getPayment(), status);
+                    payment.getPaymentData(), status);
             paymentRepository.save(newPayment);
             return newPayment;
         } else {
