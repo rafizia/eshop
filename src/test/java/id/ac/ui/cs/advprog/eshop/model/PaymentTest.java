@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;
@@ -34,14 +35,14 @@ public class PaymentTest {
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
         assertEquals("Cash on Delivery", payment.getMethod());
         assertEquals("ESHOP1234ABC5678", paymentMap.get("voucherCode"));
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test
     void testCreatePaymentSuccessStatus() {
         Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
                 "Cash on Delivery", this.paymentMap, "SUCCESS");
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test
@@ -56,8 +57,8 @@ public class PaymentTest {
     void testSetStatusToRejected() {
         Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
                 "Cash on Delivery", this.paymentMap);
-        payment.setStatus("REJECTED");
-        assertEquals("REJECTED", payment.getStatus());
+        payment.setStatus(PaymentStatus.REJECTED.getValue());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
