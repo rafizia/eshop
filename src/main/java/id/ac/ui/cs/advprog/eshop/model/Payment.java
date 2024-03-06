@@ -27,7 +27,7 @@ public class Payment {
     public Payment(String id, String method, Map<String,String> payment, String status) {
         this(id, method, payment);
 
-        String[] statusList = {"SUCCESS", "FAILED"};
+        String[] statusList = {"SUCCESS", "REJECTED"};
         if (Arrays.stream(statusList).noneMatch(item -> (item.equals(status)))) {
             throw new IllegalArgumentException();
         } else {
@@ -36,7 +36,7 @@ public class Payment {
     }
 
     public void setStatus(String status) {
-        String[] statusList = {"SUCCESS", "FAILED"};
+        String[] statusList = {"SUCCESS", "REJECTED"};
         if (Arrays.stream(statusList).noneMatch(item -> (item.equals(status)))) {
             throw new IllegalArgumentException();
         } else {

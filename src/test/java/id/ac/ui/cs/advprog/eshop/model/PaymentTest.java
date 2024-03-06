@@ -53,11 +53,11 @@ public class PaymentTest {
     }
 
     @Test
-    void testSetStatusToFailed() {
+    void testSetStatusToRejected() {
         Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
                 "Cash on Delivery", this.paymentMap);
-        payment.setStatus("FAILED");
-        assertEquals("FAILED", payment.getStatus());
+        payment.setStatus("REJECTED");
+        assertEquals("REJECTED", payment.getStatus());
     }
 
     @Test
