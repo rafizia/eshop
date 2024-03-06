@@ -105,7 +105,7 @@ public class PaymentRepositoryTest {
             paymentRepository.save(payment);
         }
         List<Payment> paymentList = paymentRepository.findAllByMethod(
-                payments.get(1).getMethod());
+                payments.get(0).getMethod());
         assertEquals(2, paymentList.size());
     }
 
