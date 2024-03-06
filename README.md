@@ -24,3 +24,10 @@ Prinsip SOLID yang saya terapkan dalam proyek ini adalah prinsip _Single Respons
 Menerapkan prinsip SOLID dalam sebuah proyek menghasilkan desain perangkat lunak yang terstruktur, mudah dipelihara, dan mudah diperluas. Sebagai contoh, kita dapat menerapkan _Single Responsibility Principle (SRP)_ dengan memisahkan class-class ke dalam unit-unit yang bertanggung jawab atas satu aspek fungsionalitas saja, seperti memisahkan kelas CarController dan ProductController. Dengan menerapkan prinsip-prinsip SOLID ini secara konsisten, proyek perangkat lunak akan memiliki desain yang lebih modular, mudah dipahami, dan lebih mudah dikelola serta diperluas seiring waktu.<br>
 
 Sebaliknya dengan mengabaikan prinsip-prinsip ini dapat menghasilkan kode yang sulit untuk diuji, sulit diperbaiki, dan sulit untuk diadaptasi dengan kebutuhan baru. Hal Ini dapat mengurangi kualitas keseluruhan dari basis kode dan dapat meningkatkan biaya pemeliharaan serta mengurangi kecepatan pengembangan dalam jangka panjang. Contohnya tanpa menerapkan prinsip _Single Responsibility Principle_, sebuah class dapat mengambil lebih banyak tanggung jawab daripada yang seharusnya, membuatnya sulit untuk dipahami, diubah, atau diperbaiki tanpa mempengaruhi komponen lain dari proyek.
+
+# Module 4
+
+### Reflection
+Menurut saya, TDD sangat berguna karena saya harus memikirkan desain dan struktur kode sebelum memulai penulisan kode sebenarnya, yang pada gilirannya meningkatkan kualitas kode secara keseluruhan. Namun masih banyak kekurangan pada penerapan TDD pada kode saya. Untuk memperbaiki kekurangan ini, saya perlu menggunakan lebih banyak waktu dalam membuat sebuah tes, sehingga saya dapat membuat tes yang lebih efektif dan efisien.
+
+Mengenai prinsip F.I.R.S.T dalam tes, saya merasa bahwa terdapat beberapa hal dimana tes yang saya lakukan bisa lebih baik. Misalnya, saya perlu fokus pada peningkatan kecepatan eksekusi tes untuk mendukung siklus pengembangan yang lebih cepat. Dengan menerapkan prinsip F.I.R.S.T dengan lebih ketat, saya berharap dapat meningkatkan efektivitas tes saya secara signifikan sehingga dapat meningkatkan kualitas perangkat lunak yang saya kembangkan.

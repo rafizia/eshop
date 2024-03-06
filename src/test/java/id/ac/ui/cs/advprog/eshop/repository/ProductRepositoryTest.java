@@ -97,6 +97,8 @@ class ProductRepositoryTest {
 
         productRepository.deleteById("eb558e9f-1c39-460e-8860-71af6af63bd6");
         assertNull(productRepository.getById("eb558e9f-1c39-460e-8860-71af6af63bd6"));
+
+        assertFalse(productRepository.deleteById("aaabbbccc"));
     }
 
     @Test
