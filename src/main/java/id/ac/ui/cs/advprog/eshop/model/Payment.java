@@ -1,8 +1,8 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.Arrays;
 import java.util.Map;
 
 @Getter @Setter
@@ -15,7 +15,7 @@ public class Payment {
     public Payment(String id, String method, Map<String,String> payment) {
         this.id = id;
         this.method = method;
-        this.status = "SUCCESS";
+        this.status = PaymentStatus.SUCCESS.getValue();
 
         if (payment.isEmpty()) {
             throw new IllegalArgumentException();
@@ -26,21 +26,14 @@ public class Payment {
 
     public Payment(String id, String method, Map<String,String> payment, String status) {
         this(id, method, payment);
-
-        String[] statusList = {"SUCCESS", "REJECTED"};
-        if (Arrays.stream(statusList).noneMatch(item -> (item.equals(status)))) {
-            throw new IllegalArgumentException();
-        } else {
-            this.status = status;
-        }
+        this.setStatus(status);
     }
 
     public void setStatus(String status) {
-        String[] statusList = {"SUCCESS", "REJECTED"};
-        if (Arrays.stream(statusList).noneMatch(item -> (item.equals(status)))) {
-            throw new IllegalArgumentException();
-        } else {
+        if (PaymentStatus.contains(status)) {
             this.status = status;
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }
