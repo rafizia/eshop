@@ -22,18 +22,18 @@ public class PaymentTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
             Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
-                    "Cash on Delivery", this.paymentMap);
+                    "Voucher Code", this.paymentMap);
         });
     }
 
     @Test
     void testCreatePaymentDefaultStatus() {
         Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
-                "Cash on Delivery", this.paymentMap);
+                "Voucher Code", this.paymentMap);
 
         assertSame(this.paymentMap, payment.getPaymentData());
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
-        assertEquals("Cash on Delivery", payment.getMethod());
+        assertEquals("Voucher Code", payment.getMethod());
         assertEquals("ESHOP1234ABC5678", paymentMap.get("voucherCode"));
         assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
@@ -41,7 +41,7 @@ public class PaymentTest {
     @Test
     void testCreatePaymentSuccessStatus() {
         Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
-                "Cash on Delivery", this.paymentMap, "SUCCESS");
+                "Voucher Code", this.paymentMap, "SUCCESS");
         assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
@@ -49,14 +49,14 @@ public class PaymentTest {
     void testCreatePaymentInvalidStatus() {
         assertThrows(IllegalArgumentException.class, () -> {
             Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
-                    "Cash on Delivery", this.paymentMap, "MEOW");
+                    "Voucher Code", this.paymentMap, "MEOW");
         });
     }
 
     @Test
     void testSetStatusToRejected() {
         Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
-                "Cash on Delivery", this.paymentMap);
+                "Voucher Code", this.paymentMap);
         payment.setStatus(PaymentStatus.REJECTED.getValue());
         assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
@@ -64,7 +64,7 @@ public class PaymentTest {
     @Test
     void testSetStatusToInvalidStatus() {
         Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
-                "Cash on Delivery", this.paymentMap);
+                "Voucher Code", this.paymentMap);
         assertThrows(IllegalArgumentException.class, () -> payment.setStatus("MEOW"));
     }
 }
