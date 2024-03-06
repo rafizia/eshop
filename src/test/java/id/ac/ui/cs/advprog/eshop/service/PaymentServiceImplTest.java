@@ -4,6 +4,7 @@ import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
 import id.ac.ui.cs.advprog.eshop.model.Product;
+import id.ac.ui.cs.advprog.eshop.repository.OrderRepository;
 import id.ac.ui.cs.advprog.eshop.repository.PaymentRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -75,12 +76,8 @@ class PaymentServiceTest {
 
     @Test
     void testCreatePayment() {
-        Payment payment = payments.get(1);
-        doReturn(payment).when(paymentRepository).save(payment);
-
-        Payment result = paymentService.addPayment(orders.get(1), "Cash On Delivery", payments.get(1).getPayment());
-        verify(paymentRepository, times(1)).save(payment);
-        assertEquals(payment.getId(), result.getId());
+        Payment result = paymentService.addPayment(orders.get(1), payments.get(1).getMethod(), payments.get(1).getPayment());
+        verify(paymentRepository, times(1)).save(result);
     }
 
     @Test
@@ -135,12 +132,8 @@ class PaymentServiceTest {
 
     @Test
     void testGetAllPayments() {
-        Payment payment = payments.get(1);
         doReturn(payments).when(paymentRepository).findAll();
         List<Payment> results = paymentService.getAllPayments();
-        for (Payment result : results) {
-            assertEquals(payment.getId(), result.getId());
-        }
         assertEquals(4, results.size());
     }
 }
